@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Newsletter sign-up form with success message</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #36384E;
+        color: #fff;
+    }
+
+    .subscription-container {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .subscription-box {
+        display: flex;
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        width: 100%;
+        max-width: 800px;
+        color: #000;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    #subscriptionForm span{
+        font-size: 10px;
+        font-weight: bold;
+        text-align: left;
+        padding-bottom: 10px;
+    }
+
+    .left-content {
+        flex: 1;
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+    .right-content {
+        flex: 1;
+        text-align: right;
+    }
+
+    .right-content .desktop {
+      display: block;
+    }
+
+    .right-content .mobile {
+      display: none;
+    }
+
+    .right-content img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+    }
+
+    .subscription-box h2 {
+        font-size: 3rem;
+        margin-bottom: 20px;
+        color: #333;
+        text-align: left;
+        line-height: 1;
+    }
+
+    .success-message h2 {
+        font-size: 2.4rem;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        color: #333;
+        text-align: left;
+        line-height: 1;
+    }
+
+    .subscription-box p {
+        margin-bottom: 20px;
+        font-size: 0.9rem;
+        color: #555;
+        text-align: left;
+    }
+
+    .subscription-box ul {
+        text-align: left;
+        list-style: none;
+        margin-bottom: 20px;
+    }
+
+    .subscription-box ul li {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 10px;
+        font-size: 0.9rem;
+        color: #555;
+    }
+
+    .subscription-box ul li span {
+        margin-top: 3px;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    input[type="email"] {
+        padding: 15px;
+        border: 2px solid #ddd;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        font-size: 1rem;
+        width: 100%;
+    }
+
+    input[type="email"]:focus {
+        border-color: #ff6b6b;
+        outline: none;
+    }
+
+    button {
+        padding: 12px;
+        background-color: #232742;
+        border: none;
+        color: #fff;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        font-size: 1rem;
+        margin-top: 10px;
+    }
+
+    button:hover {
+        padding: 12px;
+        background-image: linear-gradient(to right, #FF5379 , #FF683D);
+        border: none;
+        color: #fff;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        font-size: 1rem;
+        margin-top: 10px;
+    }
+
+    button:hover {
+        background-color: #ff3b3b;
+    }
+
+    .error-message {
+        color: red;
+        font-size: 0.9rem;
+        display: none;
+    }
+
+    .success-message {
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 50px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        display: none;
+        text-align: center;
+        color: #333;
+        max-width: 400px;
+        margin: auto;
+        text-align: left;
+    }
+
+    .success-message img { 
+        width: 15%;
+    }
+
+    #userEmail {
+        font-weight: bold;
+        color: #232742;
+    }
+
+    #dismissButton {
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #232742;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        width: 100%;
+    }
+
+    #dismissButton:hover {
+      background-image: linear-gradient(to right, #FF5379 , #FF683D);
+    }
+
+    @media (max-width: 600px) {
+        .subscription-box {
+          flex-direction: column-reverse;
+          padding: 0;
+        }
+
+        .right-content .desktop {
+          display: none;
+        }
+
+        .right-content .mobile {
+          display: block;
+        }
+
+        .left-content {
+            padding: 30px;
+        }
+
+        .subscription-box h2 {
+          font-size: 2rem;
+        }
+
+        .success-message h2 {
+          font-size: 2rem;
+          padding: 20px;
+        }
+
+        .left-content, .right-content {
+            width: 100%;
+            text-align: center;
+        }
+
+        .right-content img {
+            width: 100%;
+            /* margin: 20px 0; */
+        }
+    }
+
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body>
+
+  <div class="subscription-container">
+    <div class="subscription-box">
+        <div class="left-content">
+            <h2>Stay updated!</h2>
+            <p>Join 60,000+ product managers receiving monthly updates on:</p>
+            <ul>
+                <li><img src="assets/images/icon-list.svg" alt="List Icon"> <span>Product discovery and building what matters</span></li>
+                <li><img src="assets/images/icon-list.svg" alt="List Icon"> <span>Measuring to ensure updates are a success</span></li>
+                <li><img src="assets/images/icon-list.svg" alt="List Icon"> <span>And much more!</span></li>
+            </ul>
+            <form id="subscriptionForm">
+              <span>Email address</span>
+                <input type="email" id="email" name="email" placeholder="Email address">
+                <span class="error-message" id="errorMessage"></span>
+                <button type="submit" id="subscribeButton">Subscribe to monthly newsletter</button>
+            </form>
+        </div>
+        <div class="right-content">
+            <img class="desktop" src="assets/images/illustration-sign-up-desktop.svg" alt="Image Illustration">
+            <img class="mobile" src="assets/images/illustration-sign-up-mobile.svg" alt="Image Illustration">
+        </div>
+    </div>
+
+    <div class="success-message" id="successMessage">
+        <img class="desktop" src="assets/images/icon-success.svg" alt="Icon Success">
+        <h2>Thanks for subscribing!</h2>
+        <p>A confirmation email has been sent to <span id="userEmail"></span>. Please open it and click the button inside to confirm your subscription.</p>
+        <button id="dismissButton">Dismiss message</button>
+    </div>
+  </div>
+
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Muhammad Bilal Yousuf</a>.
+  </div>
+
+<script>
+ document.addEventListener("DOMContentLoaded", function() {
+    const form = document.getElementById('subscriptionForm');
+    const emailInput = document.getElementById('email');
+    const errorMessage = document.getElementById('errorMessage');
+    const successMessage = document.getElementById('successMessage');
+    const subscriptionBox = document.querySelector('.subscription-box');
+    const userEmailDisplay = document.getElementById('userEmail');
+    const dismissButton = document.getElementById('dismissButton');
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const emailValue = emailInput.value;
+
+        // Basic email validation
+        if (!validateEmail(emailValue)) {
+            errorMessage.textContent = "Please enter a valid email address.";
+            errorMessage.style.display = "block";
+        } else {
+            // Success case: Hide the form and show the success message
+            errorMessage.style.display = "none";
+            subscriptionBox.style.display = "none";
+            successMessage.style.display = "block";
+            userEmailDisplay.textContent = emailValue;
+        }
+    });
+
+    dismissButton.addEventListener('click', function() {
+        successMessage.style.display = "none";
+        subscriptionBox.style.display = "flex";
+        form.reset();
+    });
+
+    // Simple email validation function
+    function validateEmail(email) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(String(email).toLowerCase());
+    }
+  });
+</script>
+</body>
+</html>
